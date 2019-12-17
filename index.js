@@ -4,6 +4,8 @@ const express = require('express');
 const app = express();
 
 app.use(express.json());
+app.use(express.urlencoded( { extended: true }));
+app.use(express.static('public'));
 
 app.use(logger);
 
@@ -54,7 +56,7 @@ const { error } = validateCourse(req.body);
 });
 
 function validateCourse(course) {
-    const   schema = {
+    const schema = {
         name: Joi.string().min(3).required()
     };
 
