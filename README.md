@@ -13,3 +13,5 @@ Database
 - SQL Server
 - SQLite
 - ElasticSearch
+
+12/17/2019 06.08_Consuming_Promises 
