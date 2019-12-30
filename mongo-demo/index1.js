@@ -27,27 +27,20 @@ console.log(result);
 }
 
 async function getCourses() {
+    const pageNumber = 2;
+    const pageSize = 10;
     
 
     const courses = await Course
-                                //.find({ author: 'Mosh', isPublished: true})
-
-                                // Starts with
-                                .find({ author: /^Mosh/ })
-                                
-                                //Ends with
-                                .find({ author: /Hamedani$/i })
-
-                                // Contains Mosh
-                                .find({ author: /.*Mosh.*/i })
-
-                                .limit(10)
+                                .find({ author: 'Mosh', isPublished: true})
+                                .skip((pageNumber - 1) * pageSize)
+                                .limit(pageSize)
                                 .sort({ name: 1 })
-                                .select({ name: 1, tags: 1 });
+                                .count();
     console.log(courses)
 }
 
-createCourse();
+getCourses();
 
 
 
