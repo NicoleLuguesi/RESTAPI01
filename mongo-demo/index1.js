@@ -42,15 +42,23 @@ async function getCourses() {
     console.log(courses)
 }
 
-async function updateCourse(id) {
-    const course = await Course.findById(id);
-    if (!course) return;
-    
-    course.isPublished = true;
-    course.author = 'Another Author';
+// async function updateCourse(id) {
+//     const result = await Course.update({ _id: id }, {
+//         $set: {
+//             author: 'Mosh',
+//             isPublished: false
+//         }
+//     });
 
-    const result = await course.save();
-    console.log(result);
+    async function updateCourse(id) {
+    const course = await Course.findByIdAndUpdate(id, {
+        $set: {
+            author: 'Jason',
+            isPublished: false
+        }
+    }, { new: true });
+
+    console.log(course);
 
     // course.set({
     //     isPublished: true,
@@ -59,7 +67,7 @@ async function updateCourse(id) {
 
 }
 
-updateCourse();
+updateCourse('5e0cadcc3c87fa66cc81ac9e');
 
 // UPDATED VERSION
 
