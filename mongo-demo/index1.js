@@ -24,9 +24,16 @@ const course = new Course({
     price: 15
 });
 
-const result = await course.save();
-console.log(result);
+try {
+    await course.validate();
+    // const result = await course.save();
+    // console.log(result);
 }
+catch (ex) {
+    console.log(ex.message);
+}
+}
+
 
 async function getCourses() {
     const pageNumber = 2;
@@ -73,7 +80,7 @@ async function getCourses() {
 }
 
 
-removeCourse('5e0cadcc3c87fa66cc81ac9e');
+createCourse();
 
 // UPDATED VERSION
 
