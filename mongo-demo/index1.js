@@ -50,24 +50,30 @@ async function getCourses() {
 //         }
 //     });
 
-    async function updateCourse(id) {
-    const course = await Course.findByIdAndUpdate(id, {
-        $set: {
-            author: 'Jason',
-            isPublished: false
-        }
-    }, { new: true });
+    // async function updateCourse(id) {
+    // const course = await Course.findByIdAndUpdate(id, {
+    //     $set: {
+    //         author: 'Jason',
+    //         isPublished: false
+    //     }
+    // }, { new: true });
 
-    console.log(course);
+    // console.log(course);
 
-    // course.set({
-    //     isPublished: true,
-    //     author: 'Another Author'
-   //});
 
+//      async function removeCourse(id) {
+//    const result = await Course.deleteOne({ _id: id });
+//    console.log(result);
+//}
+
+     async function removeCourse(id) {
+  // const result = await Course.deleteMany({ _id: id });
+   const course = await Course.findByIdAndRemove(id);
+   console.log(course);
 }
 
-updateCourse('5e0cadcc3c87fa66cc81ac9e');
+
+removeCourse('5e0cadcc3c87fa66cc81ac9e');
 
 // UPDATED VERSION
 
