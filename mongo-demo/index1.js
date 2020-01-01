@@ -45,6 +45,7 @@ async function getCourses() {
 async function updateCourse(id) {
     const course = await Course.findById(id);
     if (!course) return;
+    
     course.isPublished = true;
     course.author = 'Another Author';
 
