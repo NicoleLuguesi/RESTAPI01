@@ -10,6 +10,8 @@ const courses = require('./routes/courses');
 const home = require('./routes/home');
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
+require('dotenv/config');
 
 app.set('view engine', 'pug');
 app.set('views', './views');
@@ -43,6 +45,11 @@ app.use(function(req, res, next) {
     console.log('Authenticating.....');
     next();
 });
+
+mongoose.connect(
+    process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+    console.log('CONNECTED TO DB !!!!!!!!!!!!!!!!')
+})
 
 // export PORT=5000 (to assign a port to node applications)
 

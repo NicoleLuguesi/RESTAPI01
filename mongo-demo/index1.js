@@ -57,7 +57,7 @@ const course = new Course({
     author: 'Mosh',
     tags: ['frontend'], 
     isPublished: true,
-    price: 15.8
+    price: 15
 });
 
 try {
